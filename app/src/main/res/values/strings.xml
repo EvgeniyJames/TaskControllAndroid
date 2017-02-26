@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">TaskControll</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="friends_fragment">Friends Fragment</string>
+    <string name="tast_fragment">Tast Fragment</string>
+</resources>
