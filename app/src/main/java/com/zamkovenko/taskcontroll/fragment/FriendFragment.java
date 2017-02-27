@@ -22,6 +22,10 @@ public class FriendFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.layout_friends, container, false);
+        View view = inflater.inflate(R.layout.layout_friends, container, false);
+
+        getActivity().setTitle(getString(R.string.title_friends));
+
+        return view;
     }
 }
