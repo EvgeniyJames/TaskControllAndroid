@@ -2,9 +2,11 @@
     <string name="app_name">TaskControll</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="friends_fragment">Friends Fragment</string>
-    <string name="tast_fragment">Task Fragment</string>
+    <string name="my_task_fragment">My Task Fragment</string>
+    <string name="waiting_task_fragment">Waiting Task Fragment</string>
     <string name="title_friends">Friends</string>
-    <string name="title_tasks">Tasks</string>
+    <string name="title_my_tasks">My Tasks</string>
+    <string name="title_waiting_tasks">Waiting Tasks</string>
     <string name="name">Name</string>
     <string name="phone_number">Phone number</string>
 </resources>
