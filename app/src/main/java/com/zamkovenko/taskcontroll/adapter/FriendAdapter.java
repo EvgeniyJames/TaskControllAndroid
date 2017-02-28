@@ -44,8 +44,6 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
         ViewHolder viewHolder;
         Context context = getContext();
 
-//        final View result;
-
         if (convertView == null) {
 
             viewHolder = new ViewHolder();
@@ -60,13 +58,7 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
         }
         else {
             viewHolder = (ViewHolder) convertView.getTag();
-//            result=convertView;
         }
-
-
-//        Animation animation = AnimationUtils.loadAnimation(context, (position > las) ? R.anim
-//                .up_from_bottom : R.anim.down_from_top);
-//        result.startAnimation(animation);
 
         assert friend != null;
         viewHolder.txtName.setText(friend.getName());
