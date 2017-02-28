@@ -13,6 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.zamkovenko.taskcontroll.R;
+import com.zamkovenko.taskcontroll.adapter.FriendAdapter;
+import com.zamkovenko.taskcontroll.manager.FriendManager;
+import com.zamkovenko.taskcontroll.model.Friend;
+
+import java.util.ArrayList;
 
 /**
  * Author: yevgeniy.zamkovenko
@@ -34,15 +39,10 @@ public class FriendFragment extends Fragment {
         ListView listView = (ListView) view.findViewById(R.id.friends_list);
 
 // определяем массив типа String
-        final String[] catNames = new String[] {
-                "Рыжик", "Барсик", "Мурзик", "Мурка", "Васька",
-                "Томасина", "Кристина", "Пушок", "Дымка", "Кузя",
-                "Китти", "Масяня", "Симба"
-        };
+        ArrayList<Friend> friends = FriendManager.GetInstance().GetFriends();
 
 // используем адаптер данных
-        ArrayAdapter arrayAdapter = new ArrayAdapter<>(context,
-                android.R.layout.simple_list_item_1, catNames);
+        ArrayAdapter arrayAdapter = new FriendAdapter(friends, getActivity());
 
         listView.setAdapter(arrayAdapter);
 
