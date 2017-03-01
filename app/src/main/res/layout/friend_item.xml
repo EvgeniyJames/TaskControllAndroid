@@ -1,51 +1,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:padding="10dp">
 
 
-        <LinearLayout
-            android:padding="4dp"
-            android:layout_weight="9"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="9"
+        android:orientation="vertical"
+        android:padding="4dp">
 
-                <TextView
-                    android:padding="3dp"
-                    android:id="@+id/friend_item_name"
-                    android:textAlignment="viewStart"
-                    android:layout_gravity="start"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/name"
-                    android:textSize="20sp"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/friend_item_number"
-                    android:textAlignment="viewStart"
-                    android:layout_gravity="start"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/phone_number"
-                    android:textSize="15sp"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@android:color/white" />
-
-        </LinearLayout>
-
-
-        <ImageView
-            android:id="@+id/friend_item_info"
-            android:layout_weight="1"
-            android:layout_gravity="center"
+        <TextView
+            android:id="@+id/friend_item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_dialog_info"
-            android:contentDescription="@string/app_name"/>
+            android:layout_gravity="start"
+            android:padding="3dp"
+            android:text="@string/name"
+            android:textAlignment="viewStart"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/friend_item_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/phone_number"
+            android:textAlignment="viewStart"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/friend_item_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:contentDescription="@string/app_name"
+        android:src="@android:drawable/ic_dialog_info"/>
 
 </LinearLayout>

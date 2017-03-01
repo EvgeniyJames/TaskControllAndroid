@@ -24,8 +24,6 @@ public class WaitingTaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_wainting_tasks, container, false);
 
-        getActivity().setTitle(getString(R.string.waiting_task_fragment));
-
         return view;
     }
 }

@@ -1,7 +1,7 @@
 package com.zamkovenko.taskcontroll.fragment;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -35,15 +35,11 @@ public class FriendFragment extends Fragment {
         Activity context = getActivity();
         context.setTitle(getString(R.string.title_friends));
 
-        // получаем экземпляр элемента ListView
         ListView listView = (ListView) view.findViewById(R.id.friends_list);
 
-// определяем массив типа String
         ArrayList<Friend> friends = FriendManager.GetInstance().GetFriends();
 
-// используем адаптер данных
         ArrayAdapter arrayAdapter = new FriendAdapter(friends, getActivity());
-
         listView.setAdapter(arrayAdapter);
 
         return view;

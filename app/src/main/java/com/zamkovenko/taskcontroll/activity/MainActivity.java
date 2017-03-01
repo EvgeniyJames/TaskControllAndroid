@@ -1,6 +1,5 @@
 package com.zamkovenko.taskcontroll.activity;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -15,7 +14,7 @@ import android.widget.ListView;
 
 import com.zamkovenko.taskcontroll.R;
 import com.zamkovenko.taskcontroll.fragment.FriendFragment;
-import com.zamkovenko.taskcontroll.fragment.TaskFragmentActivity;
+import com.zamkovenko.taskcontroll.fragment.TaskFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView m_drawerList;
 
     private FriendFragment m_friendFragment;
-//    private TaskFragment m_taskFragment;
+    private TaskFragment m_taskFragment;
 
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -43,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
         m_drawerList.setOnItemClickListener(new NavigationDrawerItemClickListener());
 
         m_friendFragment = new FriendFragment();
-//        m_taskFragment = new TaskFragment();
+        m_taskFragment = new TaskFragment();
 
-        SelectFragment(m_friendFragment);
+        SelectFragment(new TaskFragment());
     }
 
     public class NavigationDrawerItemClickListener implements ListView.OnItemClickListener {
@@ -59,20 +58,13 @@ public class MainActivity extends AppCompatActivity {
                     SelectFragment(m_friendFragment);
                     break;
                 case 1:
-                    Intent intent = new Intent(getApplicationContext(), TaskFragmentActivity.class);
-                    startActivity(intent);
+                    SelectFragment(new TaskFragment());
                     break;
                 default:
                     Log.d(this.getClass().getSimpleName(), "Forget to add new Listener?");
                     break;
             }
         }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
-    private void SelectFragment(android.app.Fragment fragment) {
-        getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment)
-                .commit();
     }
 
     private void SelectFragment(Fragment fragment) {
