@@ -19,6 +19,8 @@ import com.zamkovenko.taskcontroll.view.TaskView;
 
 import java.util.Date;
 
+import static com.zamkovenko.taskcontroll.contract.TaskContract.TaskEntry.TABLE_NAME;
+
 /**
  * User: EvgeniyJames
  * Date: 06.03.2017
@@ -36,13 +38,22 @@ public class TaskDebugFragment extends Fragment{
         Button btnStartService = (Button) view.findViewById(R.id.btn_start_service);
         Button btnStopService = (Button) view.findViewById(R.id.btn_stop_service);
         Button btnAddFakeTask = (Button) view.findViewById(R.id.btn_add_fake_task);
+        Button btnClearTaskDb = (Button) view.findViewById(R.id.btn_clear_task_db);
+
+        final TaskDbHelper dbHelper = new TaskDbHelper(getContext());
+
+        btnClearTaskDb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dbHelper.getWritableDatabase().execSQL("delete from "+ TABLE_NAME);
+            }
+        });
 
         btnAddFakeTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Task task = new Task("Task: " + new Date(System.currentTimeMillis()).toString());
-                TaskDbHelper taskDbHelper = new TaskDbHelper(getContext());
-                taskDbHelper.Insert(task);
+                dbHelper.Insert(task);
             }
         });
 

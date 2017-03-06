@@ -41,5 +41,4 @@ public class MyTaskFragment extends Fragment {
 
         return view;
     }
-
 }

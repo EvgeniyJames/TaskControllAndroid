@@ -16,4 +16,5 @@
     <string name="start_task_creator_service">Start Task Creator Service</string>
     <string name="stop_task_creator_service">Stop Task Creator Service</string>
     <string name="add_fake_task">Add Fake Task</string>
+    <string name="clear_task_db">Clear Task DB</string>
 </resources>

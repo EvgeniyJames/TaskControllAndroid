@@ -29,4 +29,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <Button
+        android:id="@+id/btn_clear_task_db"
+        android:textSize="12sp"
+        android:layout_gravity="center"
+        android:text="@string/clear_task_db"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>
