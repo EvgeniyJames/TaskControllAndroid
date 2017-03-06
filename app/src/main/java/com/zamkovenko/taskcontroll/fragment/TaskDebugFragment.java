@@ -18,6 +18,7 @@ import com.zamkovenko.taskcontroll.service.NewTaskCreatorDelayed;
 import com.zamkovenko.taskcontroll.view.TaskView;
 
 import java.util.Date;
+import java.util.Random;
 
 import static com.zamkovenko.taskcontroll.contract.TaskContract.TaskEntry.TABLE_NAME;
 
@@ -37,7 +38,7 @@ public class TaskDebugFragment extends Fragment{
 
         Button btnStartService = (Button) view.findViewById(R.id.btn_start_service);
         Button btnStopService = (Button) view.findViewById(R.id.btn_stop_service);
-        Button btnAddFakeTask = (Button) view.findViewById(R.id.btn_add_fake_task);
+        final Button btnAddFakeTask = (Button) view.findViewById(R.id.btn_add_fake_task);
         Button btnClearTaskDb = (Button) view.findViewById(R.id.btn_clear_task_db);
 
         final TaskDbHelper dbHelper = new TaskDbHelper(getContext());
@@ -52,7 +53,7 @@ public class TaskDebugFragment extends Fragment{
         btnAddFakeTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Task task = new Task("Task: " + new Date(System.currentTimeMillis()).toString());
+                Task task = new Task("Task: " + new Random().nextInt());
                 dbHelper.Insert(task);
             }
         });
