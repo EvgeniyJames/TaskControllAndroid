@@ -11,9 +11,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.zamkovenko.taskcontroll.R;
+import com.zamkovenko.taskcontroll.dbhelper.TaskDbHelper;
 import com.zamkovenko.taskcontroll.fragment.FriendFragment;
+import com.zamkovenko.taskcontroll.fragment.TaskDebugFragment;
 import com.zamkovenko.taskcontroll.fragment.TaskFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FriendFragment m_friendFragment;
     private TaskFragment m_taskFragment;
+    private TaskDebugFragment m_taskDebugFragment;
 
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -43,11 +47,14 @@ public class MainActivity extends AppCompatActivity {
 
         m_friendFragment = new FriendFragment();
         m_taskFragment = new TaskFragment();
+        m_taskDebugFragment = new TaskDebugFragment();
 
         SelectFragment(new TaskFragment());
+
+        new TaskDbHelper(this);
     }
 
-    public class NavigationDrawerItemClickListener implements ListView.OnItemClickListener {
+    private class NavigationDrawerItemClickListener implements ListView.OnItemClickListener {
 
         @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
         @Override
@@ -60,8 +67,13 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     SelectFragment(new TaskFragment());
                     break;
+                case 2:
+                    SelectFragment(m_taskDebugFragment);
+                    break;
                 default:
                     Log.d(this.getClass().getSimpleName(), "Forget to add new Listener?");
+                    Toast.makeText(MainActivity.this, "Forget to add new Listener?" , Toast
+                            .LENGTH_SHORT).show();
                     break;
             }
         }

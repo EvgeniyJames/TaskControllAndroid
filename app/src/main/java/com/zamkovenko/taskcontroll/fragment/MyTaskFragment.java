@@ -1,5 +1,6 @@
 package com.zamkovenko.taskcontroll.fragment;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,10 +12,12 @@ import android.widget.ListView;
 
 import com.zamkovenko.taskcontroll.R;
 import com.zamkovenko.taskcontroll.adapter.TaskAdapter;
+import com.zamkovenko.taskcontroll.dbhelper.TaskDbHelper;
 import com.zamkovenko.taskcontroll.manager.TaskManager;
 import com.zamkovenko.taskcontroll.model.Task;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: EvgeniyJames
@@ -30,9 +33,10 @@ public class MyTaskFragment extends Fragment {
 
         ListView listView = (ListView) view.findViewById(R.id.task_list);
 
-        ArrayList<Task> tasks = TaskManager.GetInstance().GetMyTasks();
+        TaskDbHelper taskDbHelper = new TaskDbHelper(getContext());
+        List<Task> taskList = taskDbHelper.GetAllTask();
 
-        ArrayAdapter arrayAdapter = new TaskAdapter(tasks, getActivity());
+        ArrayAdapter arrayAdapter = new TaskAdapter(taskList, getActivity());
         listView.setAdapter(arrayAdapter);
 
         return view;

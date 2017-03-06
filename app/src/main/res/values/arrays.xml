@@ -3,8 +3,8 @@
     <string-array name="navigatioin_menus">
 
         <item>Friends</item>
-        <item>My Task</item>
-        <item>Task for my friends</item>
+        <item>Tasks</item>
+        <item>DEBUG: Fake Task Creator</item>
 
     </string-array>
 </resources>

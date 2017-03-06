@@ -12,6 +12,7 @@ import com.zamkovenko.taskcontroll.R;
 import com.zamkovenko.taskcontroll.model.Task;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: EvgeniyJames
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 
 public class TaskAdapter extends ArrayAdapter<Task> {
 
-    private ArrayList<Task> dataSet;
+    private List<Task> dataSet;
     private Context m_context;
 
     // View lookup cache
@@ -28,7 +29,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         TextView txtTheme;
     }
 
-    public TaskAdapter(ArrayList<Task> data, Context context) {
+    public TaskAdapter(List<Task> data, Context context) {
         super(context, R.layout.task_item, data);
         dataSet = data;
         m_context = context;
@@ -58,7 +59,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         }
 
         assert task != null;
-        viewHolder.txtTheme.setText(task.getTheme());
+        viewHolder.txtTheme.setText(task.getTitle());
 
         return convertView;
     }

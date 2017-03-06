@@ -12,7 +12,7 @@ public class Task {
         this.theme = theme;
     }
 
-    public String getTheme() {
+    public String getTitle() {
         return theme;
     }
 
