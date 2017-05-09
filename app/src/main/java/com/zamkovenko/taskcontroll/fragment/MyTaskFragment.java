@@ -1,6 +1,5 @@
 package com.zamkovenko.taskcontroll.fragment;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,11 +11,10 @@ import android.widget.ListView;
 
 import com.zamkovenko.taskcontroll.R;
 import com.zamkovenko.taskcontroll.adapter.TaskAdapter;
-import com.zamkovenko.taskcontroll.dbhelper.TaskDbHelper;
-import com.zamkovenko.taskcontroll.manager.TaskManager;
+import com.zamkovenko.taskcontroll.dao.Repository;
+import com.zamkovenko.taskcontroll.dbhelper.TaskerDbHelper;
 import com.zamkovenko.taskcontroll.model.Task;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +24,8 @@ import java.util.List;
 
 public class MyTaskFragment extends Fragment {
 
+    Repository<Task> taskRepository;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,11 +33,14 @@ public class MyTaskFragment extends Fragment {
 
         ListView listView = (ListView) view.findViewById(R.id.task_list);
 
-        TaskDbHelper taskDbHelper = new TaskDbHelper(getContext());
-        List<Task> taskList = taskDbHelper.GetAllTask();
 
-        ArrayAdapter arrayAdapter = new TaskAdapter(taskList, getActivity());
-        listView.setAdapter(arrayAdapter);
+        //Needs DI
+        Repository<Task> taskDbHelper = TaskerDbHelper.getInstance(getContext());
+
+//        List<Task> taskList = taskRepository.getAll();
+
+//        ArrayAdapter arrayAdapter = new TaskAdapter(taskList, getActivity());
+//        listView.setAdapter(arrayAdapter);
 
         return view;
     }

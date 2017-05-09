@@ -1,6 +1,6 @@
 package com.zamkovenko.taskcontroll.manager;
 
-import com.zamkovenko.taskcontroll.model.Friend;
+import com.zamkovenko.taskcontroll.model.User;
 
 import java.util.ArrayList;
 
@@ -23,13 +23,13 @@ public class FriendManager {
         return s_instance;
     }
 
-    public ArrayList<Friend> GetFriends() {
-        ArrayList<Friend> friends = new ArrayList<>();
+    public ArrayList<User> GetFriends() {
+        ArrayList<User> friends = new ArrayList<>();
 
-        friends.add(new Friend("Francis", "+380965354234"));
-        friends.add(new Friend("Bill", "+380965354234"));
-        friends.add(new Friend("Louis", "+380965354234"));
-        friends.add(new Friend("Zoey", "+380965354234"));
+        friends.add(new User("Francis", "+380965354234"));
+        friends.add(new User("Bill", "+380965354234"));
+        friends.add(new User("Louis", "+380965354234"));
+        friends.add(new User("Zoey", "+380965354234"));
 
         return friends;
     }

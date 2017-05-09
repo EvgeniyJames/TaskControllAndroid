@@ -5,15 +5,17 @@ package com.zamkovenko.taskcontroll.model;
  * Date: 28.02.2017
  */
 
-public class Friend {
+public class User {
     private String name;
     private String number;
 
-    public Friend(String name, String number) {
+    public User(String name, String number) {
         this.name = name;
         this.number = number;
     }
 
+    public User() {
+    }
 
     public String getName() {
         return name;

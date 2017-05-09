@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.zamkovenko.taskcontroll.contract.TaskContract;
+import com.zamkovenko.taskcontroll.dao.Repository;
 import com.zamkovenko.taskcontroll.model.Task;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.List;
  * Date: 06.03.2017
  */
 
-public class TaskDbHelper extends SQLiteOpenHelper {
+public class TaskerDbHelper extends SQLiteOpenHelper implements Repository<Task> {
 
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
@@ -37,8 +38,21 @@ public class TaskDbHelper extends SQLiteOpenHelper {
 
     private static final String SQL_SELECT_ALL = "SELECT  * FROM " + TaskContract.TaskEntry.TABLE_NAME;
 
-    public TaskDbHelper(Context context) {
+    private static TaskerDbHelper sInstance;
+
+    private TaskerDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public static synchronized TaskerDbHelper getInstance(Context context) {
+
+        // Use the application context, which will ensure that you
+        // don't accidentally leak an Activity's context.
+        // See this article for more information: http://bit.ly/6LRzfx
+        if (sInstance == null) {
+            sInstance = new TaskerDbHelper(context.getApplicationContext());
+        }
+        return sInstance;
     }
 
     @Override
@@ -46,7 +60,7 @@ public class TaskDbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_TASK);
     }
 
-    public void Insert(Task task) {
+    public void InsertTask(Task task) {
 
         SQLiteDatabase database = getWritableDatabase();
 
@@ -91,5 +105,21 @@ public class TaskDbHelper extends SQLiteOpenHelper {
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
+    }
+
+    @Override
+    public List<Task> getAll() {
+        return GetAllTask();
+    }
+
+    @Override
+    public Task getById(String id) {
+        return GetAllTask().get(0);
+    }
+
+
+    @Override
+    public void insert(Task task) {
+        InsertTask(task);
     }
 }

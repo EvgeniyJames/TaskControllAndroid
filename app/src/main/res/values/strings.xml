@@ -17,4 +17,12 @@
     <string name="stop_task_creator_service">Stop Task Creator Service</string>
     <string name="add_fake_task">Add Fake Task</string>
     <string name="clear_task_db">Clear Task DB</string>
+    <string name="txt_send_request">Send Request</string>
+    <string name="txt_login">Login</string>
+
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_content">ContentActivity</string>
+    <string name="refresh_friends">Refresh Friends</string>
 </resources>

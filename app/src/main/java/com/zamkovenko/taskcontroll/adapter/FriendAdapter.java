@@ -11,7 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.zamkovenko.taskcontroll.R;
-import com.zamkovenko.taskcontroll.model.Friend;
+import com.zamkovenko.taskcontroll.model.User;
+import com.zamkovenko.taskcontroll.model.User;
 
 import java.util.ArrayList;
 
@@ -20,10 +21,10 @@ import java.util.ArrayList;
  * Date: 28.02.2017
  */
 
-public class FriendAdapter extends ArrayAdapter<Friend> {
+public class FriendAdapter extends ArrayAdapter<User> {
 
     private Context m_context;
-    private ArrayList<Friend> dataSet;
+    private ArrayList<User> dataSet;
 
     // View lookup cache
     private static class ViewHolder {
@@ -31,7 +32,7 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
         TextView txtNumber;
     }
 
-    public FriendAdapter(ArrayList<Friend> data, Context context) {
+    public FriendAdapter(ArrayList<User> data, Context context) {
         super(context, R.layout.friend_item, data);
         this.dataSet = data;
         this.m_context = context;
@@ -40,7 +41,7 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-        Friend friend = getItem(position);
+        User friend = getItem(position);
         ViewHolder viewHolder;
         Context context = getContext();
 

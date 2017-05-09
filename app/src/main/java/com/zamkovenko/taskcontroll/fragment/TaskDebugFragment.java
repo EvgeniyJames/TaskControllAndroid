@@ -5,20 +5,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.zamkovenko.taskcontroll.R;
-import com.zamkovenko.taskcontroll.dbhelper.TaskDbHelper;
+import com.zamkovenko.taskcontroll.asynctask.SimpleRequest;
+import com.zamkovenko.taskcontroll.dbhelper.TaskerDbHelper;
 import com.zamkovenko.taskcontroll.model.Task;
-import com.zamkovenko.taskcontroll.presenter.TaskPresenter;
 import com.zamkovenko.taskcontroll.service.NewTaskCreatorDelayed;
-import com.zamkovenko.taskcontroll.view.TaskView;
+
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Date;
-import java.util.Random;
 
 import static com.zamkovenko.taskcontroll.contract.TaskContract.TaskEntry.TABLE_NAME;
 
@@ -40,8 +42,9 @@ public class TaskDebugFragment extends Fragment{
         Button btnStopService = (Button) view.findViewById(R.id.btn_stop_service);
         final Button btnAddFakeTask = (Button) view.findViewById(R.id.btn_add_fake_task);
         Button btnClearTaskDb = (Button) view.findViewById(R.id.btn_clear_task_db);
+        Button btnSendRequest = (Button) view.findViewById(R.id.btn_send_request);
 
-        final TaskDbHelper dbHelper = new TaskDbHelper(getContext());
+        final TaskerDbHelper dbHelper = TaskerDbHelper.getInstance(getContext());
 
         btnClearTaskDb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,8 +56,8 @@ public class TaskDebugFragment extends Fragment{
         btnAddFakeTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Task task = new Task("Task: " + new Random().nextInt());
-                dbHelper.Insert(task);
+                Task task = new Task("Task: " + new Date(System.currentTimeMillis()));
+                dbHelper.InsertTask(task);
             }
         });
 
@@ -71,6 +74,13 @@ public class TaskDebugFragment extends Fragment{
             public void onClick(View view) {
                 Context context = view.getContext();
                 context.stopService(new Intent(context, NewTaskCreatorDelayed.class));
+            }
+        });
+
+        btnSendRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new SimpleRequest().execute();
             }
         });
 
